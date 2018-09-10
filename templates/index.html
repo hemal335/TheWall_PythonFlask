@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/index_styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="{{url_for('static', filename='index_scripts.js')}}"></script>
+</head>
+<body>
+    <h1 class="banner">Welcome</h1>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <p class="red">* {{ message }}</p>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            <label>First Name:</label><input type="text" name="first_name"> 
+            <label>Last Name:</label><input type="text" name="last_name">
+            <label>Email:</label><input type="text" name="email">
+            <label>Password:</label><input type="password" name="password">
+            <label>Confirm Password:</label><input type="password" name="confirm_password">
+            <input type="submit" id="btn-1">
+        </form>
+        <h1 class="log-in">Log In</h1>
+        <form action="/login" method="POST">
+            <label>Email:</label><input type="text" name="email">
+            <label>Password:</label><input type="password" name="password">
+            <input type="submit" id="btn-2">
+        </form>
+    </div>
+</body>
+</html>
