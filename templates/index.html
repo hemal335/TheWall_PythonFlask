@@ -6,12 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Homepage</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/index_styles.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
     <script src="{{url_for('static', filename='index_scripts.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1 class="banner">Welcome</h1>
-    <div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <h1> The Wall 	&#9998;</h1> 
+            </div>
+            <div class="col-sm-8 col-lg-8 col-md-8">
+                <p>Welcome to the wall. A place to share ideas and thoughts. Please login or register.</p>
+            </div>
+        </div>
+    </div>
+  
+   
+   
         {% with messages = get_flashed_messages() %}
             {% if messages %}
             {% for message in messages %}
@@ -19,21 +31,54 @@
             {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1>Register</h1>
+      
+
+        
+        <div class="container ">
+        <div class="col-sm-12 row">
+
+        <div class="col-sm-6">
         <form action="/register" method="POST">
-            <label>First Name:</label><input type="text" name="first_name"> 
-            <label>Last Name:</label><input type="text" name="last_name">
-            <label>Email:</label><input type="text" name="email">
-            <label>Password:</label><input type="password" name="password">
-            <label>Confirm Password:</label><input type="password" name="confirm_password">
-            <input type="submit" id="btn-1">
+            <div class="form-group">
+                    <h1>Register</h1>
+            </div>
+        <div  class="form-group row">
+            <label  for="first_name" class="col-sm-5 col-form-label">First Name:</label><input class="col-sm-6" name="first_name"> 
+        </div>
+        <div  class="form-group row">
+            <label  for="last_name" class="col-sm-5 col-form-label">Last Name:</label><input class="form-control col-sm-6" name="last_name">
+        </div>
+        <div  class="form-group row">
+            <label  for="email" class="col-sm-5 col-form-label">Email:</label><input class="form-control col-sm-6 " name="email">
+        </div>
+        <div  class="form-group row">
+            <label for="password" class="col-sm-5 col-form-label">Password:</label><input class="form-control col-sm-6 " type="password" name="password">
+        </div>
+        <div  class="form-group row">
+            <label  for="confirm_password" class="col-sm-5 col-form-label">Confirm PW:</label><input class="form-control col-sm-6 " type="password" name="confirm_password">
+        </div>
+        <input type="submit" class="btn btn-primary">
         </form>
-        <h1 class="log-in">Log In</h1>
+          </div>
+
+
+          <div class="col-sm-6">
         <form action="/login" method="POST">
-            <label>Email:</label><input type="text" name="email">
-            <label>Password:</label><input type="password" name="password">
-            <input type="submit" id="btn-2">
+            <div class="form-group">
+                    <h1>Login</h1>
+            </div>
+            <div  class="form-group row">
+                <label for="email" class="col-sm-5 col-form-label">Email:</label><input class="form-control col-sm-6 " type="text" name="email">
+            </div>
+            <div  class="form-group row">
+                <label for="password" class="col-sm-5 col-form-label">Password:</label><input class="form-control col-sm-6 " type="password" name="password">
+            </div>
+            <input type="submit" class="btn btn-primary">
         </form>
-    </div>
+        </div>
+
+        </div> <!-- end of row-->
+ 
+</div>
 </body>
 </html>

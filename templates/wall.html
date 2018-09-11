@@ -8,22 +8,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/wall_styles.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
     <script src="{{url_for('static', filename='wall_script.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Hello {{ name }}.<br /> Welcome to THE WALL</h1>
-        <form class="logout" action="/logout" method="POST">
-            <input type="hidden" name="logout">
-            <input class="head-btn" type="submit" value="Log Out">
-        </form>
-        <p>Post a message!</p>
-        <form action="/messagepost" method="POST">
-            <textarea name="new_message" cols="80" rows="5"></textarea> <br />
-            <input type="submit" value="Post Message">
-        </form> <br />
-    </div>
-    
+ 
+<ul class="nav nav-pills navbar-dark bg-dark">
+    <li  class="navbar-item">
+        <a href="/wall" method="GET">
+        <li class="navbar-brand" >
 
+                &#9998;
+        </li>
+        </a>
+    </li>
+    <li  class="navbar-item">
+            <form class="logout" action="/logout" method="POST">
+                <input type="hidden" name="logout">
+                <input class="btn-dark " type="submit" value="Log Out">
+            </form>
+    </li>
+    <li class="navbar-item">
+            <form class="logout" class="nav-link"  action="/create_message" method="GET">
+                <input class="btn-dark" type="submit" value="Create Post">
+            </form>
+    </li>
+   
+</ul>
+   <div class="jumbotron">
+
+ 
+    <div class="header">
+        <h1>Hello {{ name|capitalize }}.<br /> Welcome to THE WALL</h1>
+     
+      
+    </div>
+    </div>
+    <div class="container">
 
     {% for message in all_messages %}
         <div>
@@ -47,5 +68,6 @@
             </form>
         </div>
     {% endfor %}
+</div>
 </body>
 </html>

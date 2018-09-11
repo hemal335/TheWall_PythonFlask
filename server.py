@@ -69,6 +69,7 @@ def login():
         flash('We could not process your log in information')
         return redirect('/')       
 
+
 @app.route('/wall')
 def wall():
     if session.has_key('name') == False:
@@ -81,6 +82,12 @@ def wall():
     all_comments = mysql.query_db(query_2)
     datetime = time.strftime("%H:%M")
     return render_template('wall.html', **locals())
+
+@app.route('/create_message')
+def create_message():
+    if session.has_key('name') == False:
+        session['name'] = 'Stranger'
+    return render_template('create_message.html', **locals())
 
 @app.route('/messagepost', methods=['POST'])
 def messagepost():
